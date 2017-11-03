@@ -12,4 +12,6 @@ final class DM_Global
 	public static $ATTRIBUTES = [];
 	public static $RACES = [];
 	
+	public static function attribute($attr) { return @self::$ATTRIBUTES[$attr]; }
+		
 }

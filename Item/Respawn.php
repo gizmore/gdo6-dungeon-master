@@ -1,7 +1,7 @@
 <?php
 namespace GDO\DungeonMaster\Item;
 
-abstract class Obstacle extends Item
+class Respawn extends Obstacle
 {
 	
 }

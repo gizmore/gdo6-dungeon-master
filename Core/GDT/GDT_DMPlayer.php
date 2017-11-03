@@ -12,7 +12,6 @@ final class GDT_DMPlayer extends GDT_Object
 	public function __construct()
 	{
 		$this->table(DM_Player::table());
-		$this->notNull();
 	}
 	
 	/**

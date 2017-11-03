@@ -1,5 +1,5 @@
 <?php
 namespace GDO\DungeonMaster\Item;
-class BashWeapon
+class BashWeapon extends Weapon
 {
 }

@@ -3,7 +3,6 @@ namespace GDO\DungeonMaster\Util;
 
 use GDO\Core\WithInstance;
 use GDO\File\Filewalker;
-use GDO\DungeonMaster\Core\DM_Attribute;
 use GDO\DungeonMaster\Core\DM_Global;
 
 final class DM_Loader
@@ -45,5 +44,16 @@ final class DM_Loader
 			}
 		}
 		return $attrs;
+	}
+	
+	private function itemsPath() { return GWF_PATH . "GDO/DungeonMaster/data/items.php"; }
+	public function loadItemData($itemClass)
+	{
+		static $ITEM_DATA;
+		if (!$ITEM_DATA)
+		{
+			$ITEM_DATA = require_once $this->itemsPath();
+		}
+		return @$ITEM_DATA[$itemClass];
 	}
 }

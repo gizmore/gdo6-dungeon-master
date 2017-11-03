@@ -2,7 +2,6 @@
 namespace GDO\DungeonMaster\Core\GDT;
 
 use GDO\DB\GDT_Enum;
-use GDO\DungeonMaster\Util\DM_Loader;
 
 final class GDT_DMSlot extends GDT_Enum
 {
@@ -24,18 +23,5 @@ final class GDT_DMSlot extends GDT_Enum
 	public function __construct()
 	{
 		$this->enumValues(...self::$ALL);
-	}
-		
-	public function playerRaces()
-	{
-		$values = [];
-		foreach (DM_Loader::instance()->loadRaces() as $race => $data)
-		{
-			if ($data['P'])
-			{
-				$values[] = $race;
-			}
-		}
-		return $this->enumValues(...$values);
 	}
 }
