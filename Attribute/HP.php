@@ -5,7 +5,7 @@ use GDO\DungeonMaster\Core\DM_Attribute;
 use GDO\DungeonMaster\Core\DM_Player;
 use GDO\DB\GDT_UInt;
 
-class Strength extends GDT_UInt
+class HP extends GDT_UInt
 {
 	use DM_Attribute;
 	public function isComputed() { return false; }
@@ -17,9 +17,8 @@ class Strength extends GDT_UInt
 	
 	public function apply(DM_Player $player)
 	{
-		$player->adjust('MaxCarry', $this->getVar()*1000);
-		$player->adjust('MaxHP', $this->getVar()*2);
+		$dead = $player->adjusted('HP') <= 0;
+		$player->dead($dead);
 	}
-
 	
 }
