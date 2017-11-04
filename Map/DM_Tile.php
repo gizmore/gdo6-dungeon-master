@@ -108,6 +108,9 @@ final class DM_Tile extends GDO
 	#############
 	### Items ###
 	#############
+	/**
+	 * @var DM_Item[]
+	 */
 	private $items;
 	public function items()
 	{
@@ -118,8 +121,18 @@ final class DM_Tile extends GDO
 		return $this->items;
 	}
 	
+	public function itemCount()
+	{
+		return $this->items ? count($this->items) : 0;
+	}
+	
+	
 	public function addItem(DM_Item $item)
 	{
-		$this->items()[$item->getID()] = $item;
+		if (!$this->items)
+		{
+			$this->items = [];
+		}
+		$this->items[$item->getID()] = $item;
 	}
 }

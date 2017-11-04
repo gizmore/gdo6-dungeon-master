@@ -1,7 +1,6 @@
 <?php
 namespace GDO\DungeonMaster\Method;
 
-use GDO\Core\Method;
 use GDO\Form\GDT_Form;
 use GDO\Form\MethodForm;
 use GDO\DB\GDT_UInt;
@@ -9,8 +8,9 @@ use GDO\Form\GDT_AntiCSRF;
 use GDO\Form\GDT_Submit;
 use GDO\DungeonMaster\Map\GDT_DMTile;
 use GDO\DungeonMaster\Map\DM_Tile;
+use GDO\Core\GDT_JSONResponse;
 use GDO\Core\GDT_Response;
-use GDO\Core\GDT_JSON;
+use GDO\DungeonMaster\Map\DM_Floor;
 
 final class Map extends MethodForm
 {
@@ -35,18 +35,12 @@ final class Map extends MethodForm
 	public function renderMap($x, $y, $z, $w, $h)
 	{
 		$json = [];
-		$type = GDT_DMTile::make();
-		for ($Y=0; $Y<$h; $Y++)
+		$floor = DM_Floor::findById($z);
+		foreach ($floor->tiles() as $tile)
 		{
-			for ($X=0; $X<$w; $X++)
-			{
-				if ($tile = DM_Tile::getTile($x+$X, $y+$Y, $z))
-				{
-					$json = array_merge($json, $type->gdo($tile)->renderJSON());
-				}
-			}
+			$json = array_merge($json, $tile->renderJSON());
 		}
-		return GDT_Response::makeWith(GDT_JSON::make()->value($json));
+		return GDT_Response::makeWith(GDT_JSONResponse::make()->json($json));
 	}
 
 }

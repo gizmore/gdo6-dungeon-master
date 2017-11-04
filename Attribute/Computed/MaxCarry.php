@@ -1,11 +1,11 @@
 <?php
-namespace GDO\DungeonMaster\Attribute;
+namespace GDO\DungeonMaster\Attribute\Computed;
 
 use GDO\DungeonMaster\Core\DM_Attribute;
 use GDO\DungeonMaster\Core\DM_Player;
 use GDO\DB\GDT_UInt;
 
-class MaxHP extends GDT_UInt
+class MaxCarry extends GDT_UInt
 {
 	use DM_Attribute;
 	public function isComputed() { return true; }

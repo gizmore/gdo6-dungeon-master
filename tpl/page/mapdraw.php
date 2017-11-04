@@ -26,8 +26,12 @@ $initJSON = array(
 );
 ?>
 <div
+ class="dm-map dm-edit-map"
  ng-controller="DMMapEditCtrl"
  ng-init='initJSON(<?=json_encode($initJSON)?>)'>
+<div ng-repeat="row in floor.TILES">
+<span ng-repeat="tile in row" class="dm-tile"><img ng-src="GDO/DungeonMaster/img/tile/{{tile.TYPE}}.png" /></span>
+</div>
 </div>
 <?php else : ?>
 <?=$form->render()?>

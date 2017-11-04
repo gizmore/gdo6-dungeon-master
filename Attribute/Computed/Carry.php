@@ -1,5 +1,5 @@
 <?php
-namespace GDO\DungeonMaster\Attribute;
+namespace GDO\DungeonMaster\Attribute\Computed;
 
 use GDO\DungeonMaster\Core\DM_Attribute;
 use GDO\DungeonMaster\Core\DM_Player;

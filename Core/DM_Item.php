@@ -20,6 +20,7 @@ class DM_Item extends GDO
 			GDT_DMPlayer::make('item_player'),
 			GDT_DMSlot::make('item_slot'),
 			GDT_String::make('item_class')->max(32)->notNull(),
+			GDT_UInt::make('item_count')->initial('1')->notNull(),
 			GDT_UInt::make('item_x')->bytes(1),
 			GDT_UInt::make('item_y')->bytes(1),
 			GDT_UInt::make('item_z')->bytes(4),

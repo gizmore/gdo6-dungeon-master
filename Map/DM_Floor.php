@@ -38,9 +38,13 @@ final class DM_Floor extends GDO
 	#############
 	### Tiles ###
 	#############
+	/**
+	 * @var DM_Tile[]
+	 */
 	private $tiles = [];
 	public function gkeyFor($x, $y) { return "{$this->getZ()}:$y:$x"; }
 	public function addTile(DM_Tile $tile) { $this->tiles[$tile->getID()] = $tile; }
+	public function tiles() { return $this->tiles; }
 	
 	/**
 	 * @param int $x
@@ -49,10 +53,7 @@ final class DM_Floor extends GDO
 	 */
 	public function getTile($x, $y)
 	{
-		$tile = $this->tiles[$this->gkeyFor($x, $y)];
-		return $tile ? $tile : DM_Tile::endOfMap();
+		return @$this->tiles[$this->gkeyFor($x, $y)];
 	}
 	
-	
-
 }

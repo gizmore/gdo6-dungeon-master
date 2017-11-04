@@ -1,0 +1,16 @@
+.dm-map div {
+	overflow: visible;
+	white-space: nowrap;
+}
+
+span.dm-tile, span.dm-tile img {
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	background: #000;
+}
+
+span.dm-tile img {
+	padding: 1px;
+	background: #eee;
+}

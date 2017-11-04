@@ -36,9 +36,19 @@ final class Module_DungeonMaster extends GDO_Module
 	{
 		$this->addJavascript('js/dm-core.js');
 		$this->addJavascript('js/model/dm-player.js');
-		$this->addJavascript('js/dm-map-edit-ctrl.js');
-		$this->addJavascript('js/dm-item-ctrl.js');
-		$this->addJavascript('js/dm-main-ctrl.js');
+		$this->addJavascript('js/model/dm-item.js');
+		$this->addJavascript('js/model/dm-tile.js');
+		$this->addJavascript('js/model/dm-floor.js');
+		$this->addJavascript('js/model/dm-map.js');
+		$this->addJavascript('js/srvc/dm-map-srvc.js');
+		$this->addJavascript('js/srvc/dm-item-srvc.js');
+		$this->addJavascript('js/srvc/dm-player-srvc.js');
+		$this->addJavascript('js/ctrl/dm-map-ctrl.js');
+		$this->addJavascript('js/ctrl/dm-map-edit-ctrl.js');
+		$this->addJavascript('js/ctrl/dm-item-ctrl.js');
+		$this->addJavascript('js/ctrl/dm-main-ctrl.js');
+		
+		$this->addCSS('css/dm-material.css');
 	}
 
 	public function hookLeftBar(GDT_Bar $bar)

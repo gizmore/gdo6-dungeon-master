@@ -4,6 +4,7 @@ namespace GDO\DungeonMaster\Util;
 use GDO\Core\WithInstance;
 use GDO\File\Filewalker;
 use GDO\DungeonMaster\Core\DM_Global;
+use GDO\Util\Strings;
 
 final class DM_Loader
 {
@@ -26,9 +27,11 @@ final class DM_Loader
 		{
 			Filewalker::traverse($this->attributePath(), function($entry, $path){
 				$entry = substr($entry, 0, -4);
-				$klass = "GDO\DungeonMaster\Attribute\\$entry";
+				$path = 'GDO/'.Strings::substrFrom(substr($path, 0, -4), '/GDO/');
+				$klass = str_replace('/', '\\', $path);
 				DM_Global::$ATTRIBUTES[$entry] = $klass::make($entry);
 			});
+			ksort(DM_Global::$ATTRIBUTES);
 		}
 		return DM_Global::$ATTRIBUTES;
 	}
