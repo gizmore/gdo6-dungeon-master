@@ -18,7 +18,8 @@ window.DM.Floor = function(z) {
 	};
 	
 	this.addItemId = function(x, y, itemId) {
-		var item = new window.DM.Item(itemId);
+		var item = window.DM.getItem(itemId);
 		this.TILES[y][x].addItem(item);
+		return item;
 	};
 };

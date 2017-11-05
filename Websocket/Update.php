@@ -5,9 +5,12 @@ use GDO\Websocket\Server\GWS_Command;
 use GDO\Websocket\Server\GWS_Message;
 use GDO\Websocket\Server\GWS_Server;
 use GDO\Websocket\Server\GWS_Commands;
+use GDO\Core\WithInstance;
 
 final class Update extends GWS_Command
 {
+	use WithInstance;
+
 	private $payloads;
 	
 	public function tick()
@@ -20,4 +23,4 @@ final class Update extends GWS_Command
 
 }
 
-GWS_Commands::register(0x6230, new Update());
+GWS_Commands::register(0x6230, Update::instance());

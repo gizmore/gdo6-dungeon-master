@@ -23,7 +23,7 @@ final class Players extends GWS_Command
 	
 	private function playerPayload(DM_Player $player)
 	{
-		$payload = $this->gdoToBinary($player);
+		return $this->gdoToBinary($player);
 	}
 	
 }

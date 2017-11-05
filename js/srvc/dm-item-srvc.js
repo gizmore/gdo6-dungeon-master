@@ -20,16 +20,19 @@ service('DMItemSrvc', function($rootScope, GDOWebsocketSrvc) {
 	DMItemSrvc.parseItem = function(gwsMessage) {
 		var id = gwsMessage.read32();
 		var item = window.DM.getItem(id);
+		
 		item.PLAYERID = gwsMessage.read32();
-		item.SLOT = gwsMessage.read32();
+		item.SLOT = gwsMessage.read8();
 		item.CLASS = gwsMessage.readString();
-		item.COUNT = gwsMessage.read32();
+		
+		item.COUNT = gwsMessage.read16();
 		item.X = gwsMessage.read8();
 		item.Y = gwsMessage.read8();
 		item.Z = gwsMessage.read32();
 		
-		item.HP = gwsMessage.read16();
-		item.STRENGTH = gwsMessage.read8();
+		item.HP = gwsMessage.read32();
+		console.log("parsedItem:", item);
+		item.STRENGTH = gwsMessage.read32();
 	};
 	
 	

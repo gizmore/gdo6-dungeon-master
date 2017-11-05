@@ -1,8 +1,9 @@
 <?php
 namespace GDO\DungeonMaster;
+
 use GDO\Websocket\Server\GWS_Commands;
 use GDO\DungeonMaster\Map\Loader;
-use GDO\Core\Logger;
+use GDO\DungeonMaster\Websocket\Update;
 
 final class DMWS extends GWS_Commands
 {
@@ -11,7 +12,6 @@ final class DMWS extends GWS_Commands
 	############
 	public function init()
 	{
-		Logger::logDebug("test");
 		Loader::load();
 	}
 
@@ -20,5 +20,6 @@ final class DMWS extends GWS_Commands
 	#############
 	public function timer()
 	{
+		Update::instance()->tick();
 	}
 }

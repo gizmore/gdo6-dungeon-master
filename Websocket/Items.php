@@ -24,7 +24,7 @@ final class Items extends GWS_Command
 
 	private function itemPayload(DM_Item $item)
 	{
-		$payload = $this->gdoToBinary($item);
+		return $this->gdoToBinary($item);
 	}
 	
 }

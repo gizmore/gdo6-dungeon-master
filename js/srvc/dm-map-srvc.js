@@ -35,7 +35,8 @@ service('DMMapSrvc', function($rootScope, GDOWebsocketSrvc) {
 		var itemcount = gwsMessage.read8();
 		floor.setTile(x, y, type);
 		for (var i = 0; i < itemcount; i++) {
-			console.log(floor.addItemId(x, y, gwsMessage.read32()));
+			var itemId = gwsMessage.read32();
+			floor.addItemId(x, y, itemId);
 		}
 			
 	};
