@@ -13,6 +13,8 @@ use GDO\DungeonMaster\Item\Item;
 
 class DM_Item extends GDO
 {
+	use WithAttributes;
+	
 	public function gdoColumns()
 	{
 		$fields = array(
@@ -21,21 +23,15 @@ class DM_Item extends GDO
 			GDT_DMSlot::make('item_slot'),
 			GDT_String::make('item_class')->max(32)->notNull(),
 			GDT_UInt::make('item_count')->bytes(2)->initial('1')->notNull(),
-			GDT_UInt::make('item_x')->bytes(1),
-			GDT_UInt::make('item_y')->bytes(1),
-			GDT_UInt::make('item_z')->bytes(4),
 		);
 		$fields = array_merge($fields, DM_Loader::instance()->loadPersistentAttributes());
-		unset($fields['Race']);
-		unset($fields['Gender']);
+// 		unset($fields['Race']);
+// 		unset($fields['Gender']);
 		return $fields;
 	}
 	##############
 	### Getter ###
 	##############
-	public function getX() { return $this->getVar('item_x'); }
-	public function getY() { return $this->getVar('item_y'); }
-	public function getZ() { return $this->getVar('item_z'); }
 	
 	############
 	### Tile ###

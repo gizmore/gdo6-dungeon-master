@@ -1,0 +1,6 @@
+<div>
+<div ng-click="closeDialog()">X</div>
+<md-list>
+  <md-list-item ng-repeat="action in data.actions track by $index" ng-click="pickAction($index)">{{action.name}}</md-list-item>
+</md-list>
+<div>

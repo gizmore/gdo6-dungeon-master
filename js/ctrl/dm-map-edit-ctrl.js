@@ -1,6 +1,6 @@
 'use strict';
 angular.module('gdo6').
-controller('DMMapEditCtrl', function($rootScope, $scope, GDOWebsocketSrvc, DMMapSrvc) {
+controller('DMMapEditCtrl', function($rootScope, $scope, GDOWebsocketSrvc, DMMapSrvc, DMActionDlg, DMTileTypeDlg) {
 	
 	$scope.initJSON = function(config) {
 		console.log('DMMapEditCtrl.initJSON()', config);
@@ -20,4 +20,17 @@ controller('DMMapEditCtrl', function($rootScope, $scope, GDOWebsocketSrvc, DMMap
 //		GDOWebsocketSrvc.sendBinary(gwsMessage).then(DMMapSrvc.cmd6210);
 	};
 	
+	$scope.clickTile = function(x, y) {
+		console.log('DMMapEditCtrl.clickTile()', x, y);
+		var floor = window.DM.getCurrentFloor();
+		var tile = floor.getTile(x, y);
+		$scope.showActionMenu([
+			{name: "DrawTile", action: DMTileTypeDlg.open.bind(DMTileTypeDlg, tile) },
+		]);
+	};
+
+	$scope.showActionMenu = function(actions) {
+		DMActionDlg.open(actions);
+	};
+
 });

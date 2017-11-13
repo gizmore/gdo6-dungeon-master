@@ -1,3 +1,4 @@
+<div ng-controller="DMMainCtrl">
 <?php
 use GDO\DB\GDT_Object;
 use GDO\DungeonMaster\Map\DM_Floor;
@@ -29,10 +30,15 @@ $initJSON = array(
  class="dm-map dm-edit-map"
  ng-controller="DMMapEditCtrl"
  ng-init='initJSON(<?=json_encode($initJSON)?>)'>
-<div ng-repeat="row in floor.TILES">
-<span ng-repeat="tile in row" class="dm-tile"><img ng-src="GDO/DungeonMaster/img/tile/{{tile.TYPE}}.png" /></span>
+<div ng-repeat="row in floor.TILES track by $index">
+<span ng-repeat="tile in row track by $index" class="dm-tile" ng-click="clickTile($index, $parent.$index)">
+  <img src="{{tile.image()}}" />
+  <item ng-if="tile.ITEMS" ng-repeat="item in tile.ITEMS" class="dm-item"><img src="{{item.image()}}" /></item>
+  <player ng-if="tile.PLAYERS" ng-repeat="player in tile.PLAYERS" class="dm-player"><img src="{{player.image()}}" /></item>
+</span>
 </div>
 </div>
 <?php else : ?>
 <?=$form->render()?>
 <?php endif; ?>
+</div>

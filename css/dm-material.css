@@ -10,7 +10,17 @@ span.dm-tile, span.dm-tile img {
 	background: #000;
 }
 
+span.dm-tile {
+	position: relative;
+}
+
 span.dm-tile img {
 	padding: 1px;
 	background: #eee;
+}
+
+span.dm-tile item, span.dm-tile player {
+	position: absolute;
+	top: 16px;
+	left: 16px;
 }

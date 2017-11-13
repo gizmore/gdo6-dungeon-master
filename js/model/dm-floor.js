@@ -16,7 +16,10 @@ window.DM.Floor = function(z) {
 	this.setTile = function(x, y, type) {
 		this.TILES[y][x].TYPE = type;
 	};
-	
+	this.getTile = function(x, y) {
+		return this.TILES[y][x];
+	};
+
 	this.addItemId = function(x, y, itemId) {
 		var item = window.DM.getItem(itemId);
 		this.TILES[y][x].addItem(item);

@@ -31,7 +31,6 @@ service('DMItemSrvc', function($rootScope, GDOWebsocketSrvc) {
 		item.Z = gwsMessage.read32();
 		
 		item.HP = gwsMessage.read32();
-		console.log("parsedItem:", item);
 		item.STRENGTH = gwsMessage.read32();
 	};
 	

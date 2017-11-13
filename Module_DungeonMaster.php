@@ -15,10 +15,10 @@ final class Module_DungeonMaster extends GDO_Module
 	public function getClasses()
 	{
 		return array(
-			"\GDO\DungeonMaster\Core\DM_Player",
-			"\GDO\DungeonMaster\Core\DM_Item",
-			"\GDO\DungeonMaster\Map\DM_Floor",
-			"\GDO\DungeonMaster\Map\DM_Tile",
+			"GDO\DungeonMaster\Core\DM_Player",
+			"GDO\DungeonMaster\Core\DM_Item",
+			"GDO\DungeonMaster\Map\DM_Floor",
+			"GDO\DungeonMaster\Map\DM_Tile",
 		);
 	}
 	
@@ -47,6 +47,8 @@ final class Module_DungeonMaster extends GDO_Module
 		$this->addJavascript('js/ctrl/dm-map-edit-ctrl.js');
 		$this->addJavascript('js/ctrl/dm-item-ctrl.js');
 		$this->addJavascript('js/ctrl/dm-main-ctrl.js');
+		$this->addJavascript('js/dialog/dm-action-dlg.js');
+		$this->addJavascript('js/dialog/dm-tile-type-dlg.js');
 		
 		$this->addCSS('css/dm-material.css');
 	}

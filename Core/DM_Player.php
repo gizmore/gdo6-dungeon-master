@@ -10,6 +10,8 @@ use GDO\DungeonMaster\Util\DM_Loader;
 
 class DM_Player extends GDO
 {
+	use WithAttributes;
+	
 	public function gdoColumns()
 	{
 		$fields = array(
