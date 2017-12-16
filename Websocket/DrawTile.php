@@ -20,11 +20,20 @@ final class DrawTile extends GWS_Command
 		if ($tile = DM_Tile::getTile($x, $y, $z))
 		{
 			$tile->saveVar('tile_type', $type);
-			$payload = GWS_Message::payload($msg->cmd());
-			$payload .= $msg->wr8($x) . $msg->wr8($y) . $msg->wr32($z);
-			$payload .= $msg->wr8($type);
-			GWS_Global::broadcastBinary($payload);
 		}
+		else
+		{
+			$tile = DM_Tile::blank(array(
+				'tile_z' => $z,
+				'tile_y' => $y,
+				'tile_x' => $x,
+				'tile_type' => $type,
+			))->insert();
+		}
+		$payload = GWS_Message::payload($msg->cmd());
+		$payload .= $msg->wr8($x) . $msg->wr8($y) . $msg->wr32($z);
+		$payload .= $msg->wr8($type);
+		GWS_Global::broadcastBinary($payload);
 	}
 	
 }

@@ -7,6 +7,7 @@ controller('DMMainCtrl', function($rootScope, $scope, GDOWebsocketSrvc) {
 	};
 
 	$scope.connected = function() {
+		console.log('DMMainCtrl.connected()');
 	};
 	
 	$rootScope.$on('gws-ws-message', function(event, gwsMessage) {
@@ -27,4 +28,5 @@ controller('DMMainCtrl', function($rootScope, $scope, GDOWebsocketSrvc) {
 		tile.TYPE = gwsMessage.read8();
 	};
 	
+	$scope.init();
 });

@@ -16,9 +16,9 @@ final class Factory
 		if ($item = $this->instanciate($itemClass))
 		{
 			$item->setVars(array(
-				'item_x' => $x,
-				'item_y' => $y,
-				'item_z' => $z,
+				'X' => $x,
+				'Y' => $y,
+				'Floor' => $z,
 			));
 			return $item->replace();
 		}

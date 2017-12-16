@@ -28,7 +28,7 @@ final class Loader
 	public static function loadItems()
 	{
 		$items = DM_Item::table();
-		$result = $items->select()->where("item_z IS NOT NULL")->exec();
+		$result = $items->select()->where("Floor IS NOT NULL")->exec();
 		while ($item = $items->fetch($result))
 		{
 			$item->getTile()->addItem($item);
