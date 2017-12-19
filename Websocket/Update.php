@@ -36,7 +36,7 @@ final class Update extends GWS_Command
 			if ($player->isDirty())
 			{
 				$player->save();
-				$this->payloads[$player->getZ()] .= $this->payload($player);
+				$this->payloads[$player->getZ()] .= $this->gdoToBinary($player);
 			}
 		}
 		
@@ -45,20 +45,12 @@ final class Update extends GWS_Command
 			if ($item->isDirty())
 			{
 				$item->save();
-				$this->payloads[$item->getZ()] .= $this->payload($item);
+				$this->payloads[$item->getZ()] .= $this->gdoToBinary($item);
 			}
 		}
 		
 		
 		$this->sendPayloads();
-	}
-	
-	public function payload(GDO $gdo)
-	{
-		switch (get_class($gdo))
-		{
-			default: throw new GDOException("Unknown update payload class: ".get_class($gdo));
-		}
 	}
 	
 	public function execute(GWS_Message $msg)

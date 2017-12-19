@@ -8,8 +8,27 @@ controller('DMMainCtrl', function($rootScope, $scope, GDOWebsocketSrvc) {
 
 	$scope.connected = function() {
 		console.log('DMMainCtrl.connected()');
+		$scope.sendJoin();
+	};
+
+	$scope.sendJoin = function() {
+		console.log('DMMainCtrl.sendJoin()');
+		var gwsMessage = new GWS_Message().cmd(0x6203).sync();
+		GDOWebsocketSrvc.sendBinary(gwsMessage).then($scope.joined, $scope.createChar);
 	};
 	
+	$scope.joined = function() {
+		console.log('DMMainCtrl.joined()');
+	};
+
+	$scope.createChar = function(err) {
+		console.log('DMMainCtrl.createChar()', err);
+		err = JSON.parse(err.key);
+		if (err.error === 'err_create_player') {
+			DMCreateCharDlg.open();
+		}
+	};
+
 	$rootScope.$on('gws-ws-message', function(event, gwsMessage) {
 		console.log(gwsMessage);
 		var cmd = gwsMessage.readCmd();

@@ -48,6 +48,7 @@ final class Module_DungeonMaster extends GDO_Module
 		$this->addJavascript('js/ctrl/dm-item-ctrl.js');
 		$this->addJavascript('js/ctrl/dm-main-ctrl.js');
 		$this->addJavascript('js/dialog/dm-action-dlg.js');
+		$this->addJavascript('js/dialog/dm-create-char-dlg.js');
 		$this->addJavascript('js/dialog/dm-tile-type-dlg.js');
 		
 		$this->addCSS('css/dm-material.css');
